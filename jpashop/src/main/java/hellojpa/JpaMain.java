@@ -6,8 +6,15 @@ import javax.persistence.Persistence;
 
 public class JpaMain {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+        jakarta.persistence.EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
+        jakarta.persistence.EntityManager em = emf.createEntityManager();
+
+        Member member = new Member();
+
+        em.persist(member);
+
+        em.close();
         emf.close();
     }
 }
